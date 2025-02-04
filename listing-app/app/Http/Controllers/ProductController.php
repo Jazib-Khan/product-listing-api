@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -34,10 +36,12 @@ class ProductController extends Controller
         $sortOrder = $request->get('sort', 'asc');
         $query->orderBy('price', $sortOrder);
 
-        // Paginate results
-        $products = $query->paginate(10);
+        // Paginate results | Add caching for performance
+        $products = Cache::remember('products:' . request()->fullUrl(), 60, function () use ($query) {
+            return $query->paginate(10);
+        });
 
-        // Return paginated JSON response
-        return response()->json($products);
+        // Return paginated Product Resource
+        return ProductResource::collection($products);
     }
 }
