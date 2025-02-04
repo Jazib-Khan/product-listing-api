@@ -16,9 +16,9 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'price' => $this->price,
-            'category' => $this->category,
+            'name' => ucfirst($this->name), // Capitalize name
+            'price' => number_format($this->price), // Format price with 2 decimal places
+            'category' => strtoupper($this->category), // Convert category to uppercase
         ];
     }
 }
