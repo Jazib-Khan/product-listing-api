@@ -1,4 +1,4 @@
-# product-listing-api
+# Product Listing API
 
 Each product has the following attributes:<br>
 name: The name of the product (string).<br>
