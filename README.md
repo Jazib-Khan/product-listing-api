@@ -26,4 +26,5 @@ The response includes pagination metadata (e.g., current_page, next_page_url, et
   "total": 50
 }
 </code></pre>
-![image](https://github.com/user-attachments/assets/fe159a7d-0f96-491f-ad37-037eba45eec0)
+![image](https://github.com/user-attachments/assets/87638b93-dc05-4511-ad8e-98cd2b67cb35)
+
